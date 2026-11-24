@@ -1,0 +1,1129 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nexora | Build What's Next</title>
+
+  <style>
+    /* ---------- BASIC RESET ---------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #f8fafc;
+      color: #142033;
+      line-height: 1.6;
+    }
+
+    :root {
+      --primary: #635bff;
+      --dark: #101828;
+      --muted: #64748b;
+      --light: #f8fafc;
+      --white: #ffffff;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    /* ---------- NAVBAR ---------- */
+    header {
+      background: rgba(255, 255, 255, 0.95);
+      border-bottom: 1px solid #e5eaf1;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: 800;
+      color: var(--dark);
+      text-decoration: none;
+    }
+
+    .logo span {
+      color: var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #475569;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-btn {
+      text-decoration: none;
+      padding: 11px 20px;
+      border-radius: 9px;
+      background: var(--primary);
+      color: white;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .nav-btn:hover {
+      background: #4942dc;
+      transform: translateY(-2px);
+    }
+
+    /* ---------- HERO SECTION ---------- */
+    .hero {
+      padding: 100px 0 90px;
+      background:
+        radial-gradient(circle at 85% 20%, #e0ddff 0, transparent 35%),
+        linear-gradient(135deg, #f8fafc, #eef2ff);
+      overflow: hidden;
+    }
+
+    .hero-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 50px;
+    }
+
+    .hero-text {
+      flex: 1;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: #eeedff;
+      color: var(--primary);
+      padding: 8px 15px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 6vw, 68px);
+      line-height: 1.1;
+      letter-spacing: -2px;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 span {
+      color: var(--primary);
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 18px;
+      max-width: 550px;
+      margin-bottom: 30px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      border-radius: 10px;
+      padding: 14px 24px;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px #635bff40;
+    }
+
+    .btn-outline {
+      color: var(--dark);
+      border: 1px solid #cbd5e1;
+      background: white;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .hero-visual {
+      flex: 1;
+      min-height: 350px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .dashboard {
+      background: white;
+      width: 100%;
+      max-width: 450px;
+      padding: 30px;
+      border-radius: 24px;
+      box-shadow: 0 30px 80px #38466b18;
+      transform: rotate(2deg);
+    }
+
+    .dashboard-top {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 25px;
+    }
+
+    .dashboard-top h3 {
+      font-size: 19px;
+    }
+
+    .status {
+      background: #dcfce7;
+      color: #15803d;
+      padding: 5px 12px;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .dashboard-number {
+      font-size: 38px;
+      font-weight: 800;
+      margin: 10px 0;
+    }
+
+    .dashboard-sub {
+      color: #16a34a;
+      font-size: 14px;
+    }
+
+    .bars {
+      display: flex;
+      align-items: flex-end;
+      height: 150px;
+      gap: 12px;
+      margin-top: 25px;
+    }
+
+    .bars div {
+      flex: 1;
+      background: linear-gradient(to top, #635bff, #a5a0ff);
+      border-radius: 8px 8px 0 0;
+      animation: grow 1s ease;
+    }
+
+    .bars div:nth-child(1) { height: 35%; }
+    .bars div:nth-child(2) { height: 55%; }
+    .bars div:nth-child(3) { height: 45%; }
+    .bars div:nth-child(4) { height: 70%; }
+    .bars div:nth-child(5) { height: 60%; }
+    .bars div:nth-child(6) { height: 90%; }
+    .bars div:nth-child(7) { height: 100%; }
+
+    @keyframes grow {
+      from { height: 0; }
+      to { height: var(--height); }
+    }
+
+    /* ---------- SECTION COMMON ---------- */
+    section {
+      padding: 85px 0;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-heading .tag {
+      color: var(--primary);
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(30px, 4vw, 42px);
+      margin: 12px 0;
+      letter-spacing: -1px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      max-width: 600px;
+      margin: auto;
+    }
+
+    /* ---------- ABOUT ---------- */
+    .about {
+      background: white;
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .about-box {
+      background: linear-gradient(135deg, #635bff, #8b85ff);
+      border-radius: 25px;
+      padding: 45px;
+      color: white;
+      min-height: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .about-box h3 {
+      font-size: 28px;
+      margin-bottom: 15px;
+    }
+
+    .about-text h3 {
+      font-size: 28px;
+      margin-bottom: 15px;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .about-list {
+      list-style: none;
+    }
+
+    .about-list li {
+      margin: 12px 0;
+      font-weight: 600;
+    }
+
+    .about-list li::before {
+      content: "✓ ";
+      color: var(--primary);
+      font-weight: 900;
+    }
+
+    /* ---------- SERVICES ---------- */
+    .services {
+      background: #f8fafc;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .service-card {
+      background: white;
+      border: 1px solid #edf0f5;
+      padding: 30px;
+      border-radius: 18px;
+      transition: 0.3s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px #1018280c;
+      border-color: #d9d5ff;
+    }
+
+    .service-icon {
+      width: 55px;
+      height: 55px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: #eeedff;
+      font-size: 26px;
+      margin-bottom: 20px;
+    }
+
+    .service-card h3 {
+      margin-bottom: 12px;
+      font-size: 20px;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    /* ---------- ACHIEVEMENTS ---------- */
+    .stats {
+      background: var(--dark);
+      color: white;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 25px;
+      text-align: center;
+    }
+
+    .stat h2 {
+      color: #a5a0ff;
+      font-size: 42px;
+      margin-bottom: 5px;
+    }
+
+    .stat p {
+      color: #cbd5e1;
+    }
+
+    /* ---------- TEAM ---------- */
+    .team {
+      background: white;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .team-card {
+      background: #f8fafc;
+      border-radius: 18px;
+      overflow: hidden;
+      text-align: center;
+      border: 1px solid #edf0f5;
+      transition: 0.3s;
+    }
+
+    .team-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .team-avatar {
+      height: 220px;
+      display: grid;
+      place-items: center;
+      font-size: 75px;
+      background: linear-gradient(135deg, #e0e7ff, #f3e8ff);
+    }
+
+    .team-info {
+      padding: 25px;
+    }
+
+    .team-info h3 {
+      margin-bottom: 5px;
+    }
+
+    .team-info p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* ---------- TESTIMONIALS ---------- */
+    .testimonials {
+      background: #f8fafc;
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .testimonial-card {
+      background: white;
+      padding: 30px;
+      border-radius: 18px;
+      border: 1px solid #edf0f5;
+    }
+
+    .stars {
+      color: #f59e0b;
+      letter-spacing: 3px;
+      margin-bottom: 15px;
+    }
+
+    .testimonial-card > p {
+      color: #475569;
+      font-style: italic;
+      margin-bottom: 25px;
+    }
+
+    .customer {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .customer-avatar {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: #eeedff;
+      display: grid;
+      place-items: center;
+      font-size: 22px;
+    }
+
+    .customer-info h4 {
+      font-size: 15px;
+    }
+
+    .customer-info p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* ---------- CONTACT ---------- */
+    .contact {
+      background: white;
+    }
+
+    .contact-wrapper {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 40px;
+    }
+
+    .contact-info {
+      background: var(--dark);
+      color: white;
+      border-radius: 20px;
+      padding: 35px;
+    }
+
+    .contact-info h3 {
+      font-size: 26px;
+      margin-bottom: 15px;
+    }
+
+    .contact-info > p {
+      color: #cbd5e1;
+      margin-bottom: 30px;
+    }
+
+    .contact-detail {
+      margin: 20px 0;
+    }
+
+    .contact-detail span {
+      display: block;
+      color: #a5a0ff;
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+
+    .contact-detail p {
+      color: white;
+    }
+
+    .contact-form {
+      padding: 10px;
+    }
+
+    .contact-form h3 {
+      font-size: 26px;
+      margin-bottom: 25px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 7px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #dbe2ea;
+      border-radius: 9px;
+      outline: none;
+      background: #f8fafc;
+      font-size: 15px;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px #635bff15;
+    }
+
+    .form-group textarea {
+      height: 130px;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      border: none;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      background: #0b1120;
+      color: white;
+      padding: 35px 0;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-content p {
+      color: #94a3b8;
+      font-size: 14px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-links a {
+      text-decoration: none;
+      color: #cbd5e1;
+      font-size: 14px;
+    }
+
+    .footer-links a:hover {
+      color: #a5a0ff;
+    }
+
+    /* ---------- RESPONSIVE DESIGN ---------- */
+    @media (max-width: 900px) {
+      .hero-content {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-buttons {
+        justify-content: center;
+      }
+
+      .services-grid,
+      .testimonial-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .about-content,
+      .contact-wrapper {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 35px;
+      }
+
+      .nav-links {
+        gap: 15px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .navbar {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px 20px;
+      }
+
+      .nav-links a {
+        font-size: 13px;
+      }
+
+      .nav-btn {
+        display: none;
+      }
+
+      .hero {
+        padding: 65px 0;
+      }
+
+      .hero h1 {
+        font-size: 42px;
+      }
+
+      section {
+        padding: 60px 0;
+      }
+
+      .services-grid,
+      .team-grid,
+      .testimonial-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .about-box {
+        padding: 30px;
+      }
+
+      .dashboard {
+        padding: 22px;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-links {
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <div class="container navbar">
+      <a href="#" class="logo">Nexora<span>.</span></a>
+
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+      </ul>
+
+      <a href="#contact" class="nav-btn">Let's Talk ↗</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="container hero-content">
+      <div class="hero-text">
+        <span class="hero-badge">✦ Innovation meets possibility</span>
+
+        <h1>Build What's <span>Next.</span></h1>
+
+        <p>
+          We help ambitious businesses transform bold ideas into
+          powerful digital experiences. Your vision deserves more than
+          ordinary — let's make extraordinary happen.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#services" class="btn btn-primary">Explore Our Services ↗</a>
+          <a href="#about" class="btn btn-outline">Discover Nexora</a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="dashboard">
+          <div class="dashboard-top">
+            <h3>Growth Overview</h3>
+            <span class="status">● Live</span>
+          </div>
+
+          <p style="color:#64748b;">Total business growth</p>
+          <div class="dashboard-number">+248%</div>
+          <p class="dashboard-sub">↗ Strong growth this year</p>
+
+          <div class="bars">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+
+          <p style="text-align:center; color:#94a3b8; margin-top:12px;">
+            Performance Analytics
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="section-heading">
+        <span class="tag">Who We Are</span>
+        <h2>Ideas That Create Impact</h2>
+        <p>We are a team of thinkers, creators, and problem-solvers passionate about making a difference.</p>
+      </div>
+
+      <div class="about-content">
+        <div class="about-box">
+          <h3>Innovation isn't just what we do. It's who we are.</h3>
+          <p>
+            We believe the right ideas, combined with the right technology,
+            can change businesses and improve lives.
+          </p>
+        </div>
+
+        <div class="about-text">
+          <h3>Driven by purpose. Built for tomorrow.</h3>
+          <p>
+            Nexora is a modern technology startup helping businesses
+            navigate the digital world. From strategy to execution,
+            we bring creativity, technology, and expertise together
+            to deliver meaningful results.
+          </p>
+
+          <ul class="about-list">
+            <li>Customer-first approach</li>
+            <li>Creative and innovative solutions</li>
+            <li>Transparent communication</li>
+            <li>Results-driven execution</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-heading">
+        <span class="tag">What We Do</span>
+        <h2>Solutions for Your Growth</h2>
+        <p>Everything you need to build, scale, and succeed in a digital-first world.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">💻</div>
+          <h3>Web Development</h3>
+          <p>Modern, responsive, and high-performance websites that turn visitors into customers.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">📱</div>
+          <h3>App Development</h3>
+          <p>Powerful mobile and web applications built around your business needs.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🎨</div>
+          <h3>UI/UX Design</h3>
+          <p>Beautiful, intuitive experiences designed to delight users and simplify interactions.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🚀</div>
+          <h3>Digital Marketing</h3>
+          <p>Smart digital strategies that grow your audience and increase brand visibility.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🤖</div>
+          <h3>AI Solutions</h3>
+          <p>Automation and intelligent tools that help businesses work smarter and faster.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">📊</div>
+          <h3>Business Consulting</h3>
+          <p>Expert guidance to turn challenges into opportunities and ideas into strategy.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACHIEVEMENTS -->
+  <section class="stats" id="achievements">
+    <div class="container">
+      <div class="section-heading">
+        <span class="tag">Our Achievements</span>
+        <h2 style="color:white;">Numbers That Tell Our Story</h2>
+        <p>Our progress reflects the trust, passion, and hard work behind every project.</p>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat">
+          <h2>120+</h2>
+          <p>Projects Completed</p>
+        </div>
+
+        <div class="stat">
+          <h2>85+</h2>
+          <p>Happy Clients</p>
+        </div>
+
+        <div class="stat">
+          <h2>15+</h2>
+          <p>Industry Awards</p>
+        </div>
+
+        <div class="stat">
+          <h2>5+</h2>
+          <p>Years of Innovation</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="team" id="team">
+    <div class="container">
+      <div class="section-heading">
+        <span class="tag">Meet Our Team</span>
+        <h2>The People Behind the Vision</h2>
+        <p>Great ideas become reality when great people work together.</p>
+      </div>
+
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-avatar">👨🏻‍💼</div>
+          <div class="team-info">
+            <h3>Alex Morgan</h3>
+            <p>Founder & CEO</p>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">👩🏻‍💻</div>
+          <div class="team-info">
+            <h3>Sophia Williams</h3>
+            <p>Head of Technology</p>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar">👨🏽‍🎨</div>
+          <div class="team-info">
+            <h3>Ryan Cooper</h3>
+            <p>Creative Director</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <div class="section-heading">
+        <span class="tag">Testimonials</span>
+        <h2>Words From Our Clients</h2>
+        <p>Building relationships is just as important as building products.</p>
+      </div>
+
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>
+            "Nexora transformed our idea into a beautiful digital product.
+            Their team was creative, professional, and incredibly supportive."
+          </p>
+          <div class="customer">
+            <div class="customer-avatar">👩</div>
+            <div class="customer-info">
+              <h4>Emily Johnson</h4>
+              <p>Business Owner</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>
+            "The results exceeded our expectations. Our website performance
+            and customer engagement improved significantly."
+          </p>
+          <div class="customer">
+            <div class="customer-avatar">👨</div>
+            <div class="customer-info">
+              <h4>Daniel Smith</h4>
+              <p>Marketing Director</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>
+            "An amazing team to work with. They understood our vision,
+            communicated clearly, and delivered an excellent solution."
+          </p>
+          <div class="customer">
+            <div class="customer-avatar">👩🏻</div>
+            <div class="customer-info">
+              <h4>Olivia Brown</h4>
+              <p>Startup Founder</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="section-heading">
+        <span class="tag">Get In Touch</span>
+        <h2>Let's Build Something Great</h2>
+        <p>Have an idea or project in mind? We'd love to hear about it.</p>
+      </div>
+
+      <div class="contact-wrapper">
+        <div class="contact-info">
+          <h3>Let's Talk</h3>
+          <p>Have a question, a project, or just want to say hello? Reach out to us.</p>
+
+          <div class="contact-detail">
+            <span>📧 EMAIL</span>
+            <p>hello@nexora.com</p>
+          </div>
+
+          <div class="contact-detail">
+            <span>📞 PHONE</span>
+            <p>+91 98765 43210</p>
+          </div>
+
+          <div class="contact-detail">
+            <span>📍 LOCATION</span>
+            <p>Hyderabad, India</p>
+          </div>
+
+          <div class="contact-detail">
+            <span>⏰ WORKING HOURS</span>
+            <p>Mon – Fri, 9:00 AM – 6:00 PM</p>
+          </div>
+        </div>
+
+        <div class="contact-form">
+          <h3>Send Us a Message</h3>
+
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" placeholder="Enter your name" required />
+            </div>
+
+            <div class="form-group">
+              <label for="email">Your Email</label>
+              <input type="email" id="email" placeholder="Enter your email" required />
+            </div>
+
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" placeholder="What is this about?" required />
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" placeholder="Tell us about your project..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary submit-btn">
+              Send Message ↗
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-content">
+      <a href="#home" class="logo" style="color:white;">Nexora<span>.</span></a>
+
+      <p>© <span id="year"></span> Nexora Technologies. All rights reserved.</p>
+
+      <div class="footer-links">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    // Automatically update copyright year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Demo contact form
+    document.getElementById("contactForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value;
+
+      alert("Thank you, " + name + "! Your message form was submitted successfully.");
+
+      this.reset();
+    });
+  </script>
+
+</body>
+</html>
